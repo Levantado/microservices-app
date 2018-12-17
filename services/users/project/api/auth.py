@@ -1,10 +1,11 @@
-from flask import  Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request
 from sqlalchemy import exc, or_
 
 from project.api.models import User
 from project import db, bcrypt
 
 auth_blueprint = Blueprint('auth', __name__)
+
 
 @auth_blueprint.route('/auth/register', methods=['POST'])
 def register_user():
@@ -20,7 +21,7 @@ def register_user():
     password = post_data.get('password')
     try:
         user = User.query.filter(
-            or_(User.username==username, User.email==email)).first()
+            or_(User.username == username, User.email == email)).first()
         if not user:
             new_user = User(
                 username=username,
@@ -37,7 +38,7 @@ def register_user():
         else:
             response_object['message'] = 'Sorry. That user already exists.'
             return jsonify(response_object), 400
-    except (exc.IntegrityError, ValueError) as e:
+    except (exc.IntegrityError, ValueError):
         db.session.rollback()
         return jsonify(response_object), 400
 
@@ -65,7 +66,7 @@ def login_user():
         else:
             response_object['message'] = 'User does not exist.'
             return jsonify(response_object), 404
-    except Exception as e:
+    except Exception:
         response_object['message'] = 'Try again.'
         return jsonify(response_object), 500
 
@@ -89,6 +90,7 @@ def logout_user():
             return jsonify(response_object), 401
     else:
         return jsonify(response_object), 403
+
 
 @auth_blueprint.route('/auth/status', methods=['GET'])
 def get_user_status():

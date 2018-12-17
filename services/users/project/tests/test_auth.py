@@ -5,6 +5,7 @@ from flask import current_app
 from project.tests.base import BaseTestCase
 from project.tests.utils import add_user
 
+
 class TestAuthBlueprint(BaseTestCase):
     def test_users_registration(self):
         with self.client:
@@ -42,7 +43,7 @@ class TestAuthBlueprint(BaseTestCase):
             self.assertIn('fail', data['status'])
 
     def test_user_registration_duplicate_username(self):
-        add_user('test','test@test.comk', 'test')
+        add_user('test', 'test@test.comk', 'test')
         with self.client:
             response = self.client.post(
                 '/auth/register',
