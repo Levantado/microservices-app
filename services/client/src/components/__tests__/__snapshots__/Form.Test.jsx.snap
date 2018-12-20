@@ -21,7 +21,6 @@ exports[`Login Form renders a snapshot properly 1`] = `
         className="input is-medium"
         name="email"
         placeholder="Enter an email address"
-        required={true}
         type="email"
         value=""
       />
@@ -33,7 +32,6 @@ exports[`Login Form renders a snapshot properly 1`] = `
         className="input is-medium"
         name="password"
         placeholder="Enter a password"
-        required={true}
         type="password"
         value=""
       />
@@ -68,7 +66,6 @@ exports[`Register Form renders a snapshot properly 1`] = `
         className="input is-medium"
         name="username"
         placeholder="Enter a username"
-        required={true}
         type="text"
         value=""
       />
@@ -80,7 +77,6 @@ exports[`Register Form renders a snapshot properly 1`] = `
         className="input is-medium"
         name="email"
         placeholder="Enter an email address"
-        required={true}
         type="email"
         value=""
       />
@@ -92,7 +88,6 @@ exports[`Register Form renders a snapshot properly 1`] = `
         className="input is-medium"
         name="password"
         placeholder="Enter a password"
-        required={true}
         type="password"
         value=""
       />
